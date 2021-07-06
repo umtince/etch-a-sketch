@@ -40,3 +40,7 @@ input{
     width: 960px;
     height: 960px;
 }
+
+.gridClass{
+    border: 1px solid gray;
+}
