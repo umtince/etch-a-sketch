@@ -36,7 +36,7 @@ input{
 
 #container{
     display: grid;
-    background-color: blue;
+    background-color: white;
     width: 960px;
     height: 960px;
 }
