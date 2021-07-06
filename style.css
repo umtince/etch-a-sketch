@@ -44,3 +44,12 @@ input{
 .gridClass{
     border: 1px solid gray;
 }
+img{
+    margin-right: 10px;
+}
+#link-Github{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
