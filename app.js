@@ -6,7 +6,7 @@ const paraGridSize = document.querySelector("#paraGridSize");
 const btnClearAll = document.querySelector("#clearAll");
 const container = document.querySelector("#container");
 
-let gridSize=1;
+let gridSize=16;
 
 setGridSize(gridSize);
 
