@@ -21,6 +21,35 @@ function setGridSize()
     createBoard(container);
 }
 
+
+toggleEraseCtr = 1;
+
+btnToggleErase.addEventListener("click", () => {
+
+    toggleEraseCtr++;
+    console.log("toggleerase:"+toggleEraseCtr);
+});
+
+function erase()
+{
+    return (toggleEraseCtr % 2 === 0) ? true : false; 
+}
+
+
+let toggleRainbowCtr = 1;
+
+btnToggleRainbow.addEventListener("click", () => {
+    toggleRainbowCtr++;
+});
+
+function rainbow()
+{
+    return (toggleRainbowCtr % 2 === 0) ? true : false;
+}
+
+
+
+
 function createBoard(container)
 {
     container.innerHTML = "";
@@ -30,7 +59,7 @@ function createBoard(container)
         let gridDiv = document.createElement("div");
         gridDiv.className = "gridClass";
         gridDiv.addEventListener("mouseover", () => {
-            draw(colorPicked,gridDiv);
+            draw(colorPicked,gridDiv,erase(),rainbow());
         });
         container.append(gridDiv);
     }
@@ -46,9 +75,33 @@ colorPicker.addEventListener("change", () => {
     colorPicked = colorPicker.value;
 });
 
-function draw(colorPicked, gridElement)
+function draw(colorPicked, gridElement, isErase, isRainbow)
 {
-    gridElement.style.backgroundColor = colorPicked;
+    if(!isErase && !isRainbow)
+    {
+        gridElement.style.backgroundColor = colorPicked;
+        toggleRainbowCtr = 1;
+        toggleEraseCtr = 1;
+    }
+    else if(isErase)
+    {
+        gridElement.style.backgroundColor = "white";
+        toggleRainbowCtr = 1;
+    }
+    else if(isRainbow)
+    {
+        console.log("girdi");
+        gridElement.style.backgroundColor = randomColorGenerate();
+        toggleEraseCtr = 1;
+    }
+    
+}
+
+
+function randomColorGenerate()
+{
+    
+    return `rgb(${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)}, ${Math.floor(Math.random()*256)})`;
 }
 
 
@@ -66,23 +119,3 @@ function clearAll(container)
         list[i].style.backgroundColor = "white";
     }
 }
-
-/*
-
-    TOGGLE ERASE 1 İKEN SİLSİN   (YADA 2 YE BÖLÜNEBİLİYORKEN DE OLUR FARKETMEZ)
-    0 İKEN COLOR PİCKERADN GELEN DEĞERLE ÇİZSİN
-
-
-let toggleEraseCounter = 0;
-
-toggleErase.addEventListener("click", () => {
-
-    
-
-});
-
-
-function togErase()
-{
-
-}*/
